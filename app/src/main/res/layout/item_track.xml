@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="0dp"
+    android:id="@+id/linearLayout"
+    android:clickable="true"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/idTrack"
+        android:layout_width="364dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="ID:"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:inputType="number"/>
+
+    <TextView
+        android:id="@+id/titleTrack"
+        android:layout_width="362dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="TITLE:"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/singerTrack"
+        android:layout_width="362dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="SINGER:"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/deleteTrackbtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="DELETE TRACK"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+</LinearLayout>
