@@ -1,12 +1,11 @@
 package dsa.eetac.upc.edu.tracksminimo2;
 
-import android.telecom.Call;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.util.List;
 
+import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
@@ -20,26 +19,27 @@ public interface APIRest {
     //We specify the url
     String BASE_URL = "http://147.83.7.155:8080/dsaApp/";
 
-    //GET all tracks
+    //GET all tracks. Funcion que da la lista con las diversas canciones
     @GET("tracks")
-    retrofit2.Call<List<Track>> getAllTracks();
+    Call<List<Track>> getAllTracks();
 
     //Get an especific track passing its ID
     @GET("tracks/{id}")
-    retrofit2.Call<Track> getTrack(@Path("id") int id);
+    Call<Track> getTrack(@Path("id") int id);
 
-    //Create a new track
+    //Create a new track, crear nueva track se pasa body ya que pasamos titulo, artista y id, tipo trak
     @POST("tracks")
-    retrofit2.Call<Track> createTrack(@Body Track track);
+    Call<Track> createTrack(@Body Track track);
 
     //Update a track
     @PUT("tracks")
-    retrofit2.Call<Void> updateTrack(@Body Track track);
+    Call<Void> updateTrack(@Body Track track);
 
-    //Delete a track
+    //Delete a track, solo necesitamos el parametro id que vamos a borrar
     @DELETE("tracks/{id}")
-    retrofit2.Call<Void> deleteTrack(@Path("id") int id);
+    Call<Void> deleteTrack(@Path("id") int id);
 
+    //Arrancar API importante
     static APIRest createAPIRest() {
         Gson gson = new GsonBuilder()
                 .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
@@ -52,5 +52,4 @@ public interface APIRest {
 
         return retrofit.create(APIRest.class);
     }
-
 }

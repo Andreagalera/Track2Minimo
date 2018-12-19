@@ -6,12 +6,14 @@ public class Track {
     String title;
     String singer;
 
+    //Constructor
     public Track(int id, String title, String singer) {
         this.id = id;
         this.title = title;
         this.singer = singer;
     }
 
+    //Gets i Sets
     public int getId() {
         return id;
     }

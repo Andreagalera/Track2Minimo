@@ -15,11 +15,15 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class UpdateTrackActivity extends AppCompatActivity {
+    //Declaar API
+    private APIRest myapirest;
+    //Declarar textview y botones que aparecen en el layout para pasar valor
     private TextView updateTrackTitle;
     private TextView updateTrackSinger;
     private Button updateTrackbtn;
-    private APIRest myapirest;
+    //Creamos track
     public Track updateTrack;
+    //Declarar spinner de cargando donde estamos esperando los datos
     ProgressDialog progressDialog;
 
     @Override
@@ -27,11 +31,14 @@ public class UpdateTrackActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.update_track_layout);
 
+        //Asignamos variable de de los diferents textview y botones a sus variables
         updateTrackTitle = findViewById(R.id.update_track_title);
         updateTrackSinger = findViewById(R.id.update_track_singer);
         updateTrackbtn = findViewById(R.id.update_track_btn);
 
+        //Obtiene el Intent para empiezar la actividad y extraigo el string
         Intent intent = getIntent();
+
         String messageId = intent.getStringExtra("TRACK ID");
         String[] messageIdParts = messageId.split(" ");
         int id = Integer.parseInt(messageIdParts[1]);
@@ -42,20 +49,24 @@ public class UpdateTrackActivity extends AppCompatActivity {
         String[] singerparts = singer.split(":");
         updateTrackSinger.setText(singerparts[1]);
 
+        //A partir de lso datos recogidos de id, titulo y cantante hacemos track
         updateTrack = new Track(id, title, singer);
 
+        //Creamos API( vigilar que API este bien)
         myapirest = APIRest.createAPIRest();
 
+        //Evento boton update
         updateTrackbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Progress loading
+                //Progress loading. Justo al abrir esta actividad ponemos el spinner de cargando
                 progressDialog = new ProgressDialog(UpdateTrackActivity.this);
                 progressDialog.setTitle("Loading...");
                 progressDialog.setMessage("Waiting for the server");
                 progressDialog.setCancelable(false);
                 progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
                 progressDialog.show();
+                //llamar función update track
                 updateTrack(updateTrack);
             }
         });
@@ -63,13 +74,15 @@ public class UpdateTrackActivity extends AppCompatActivity {
 
     }
 
+    //Función actualizar track
     private void updateTrack(Track updateTrack) {
+        //Desarrollamos función del API //Call<Void> updateTrack(@Body Track track);
         Call<Void> trackCall = myapirest.updateTrack(updateTrack);
-
         trackCall.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if(response.isSuccessful()){
+                    //Si se actualiza el spinner desaparece
                     progressDialog.hide();
                 }
                 else{

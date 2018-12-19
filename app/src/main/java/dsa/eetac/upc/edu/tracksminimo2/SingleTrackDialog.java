@@ -11,9 +11,12 @@ import android.view.View;
 import android.widget.EditText;
 
 public class SingleTrackDialog extends AppCompatDialogFragment {
+    //Declara textview que aparece en el layput para pasar el valor
     private EditText trackidtext;
+    //Crea/Declara eñ escuchador
     private SingleTrackDialogListener listener;
 
+    //Es dialog
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState){
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
