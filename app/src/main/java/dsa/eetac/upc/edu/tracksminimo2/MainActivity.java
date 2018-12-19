@@ -73,8 +73,10 @@ public class MainActivity extends AppCompatActivity implements SingleTrackDialog
         //Llamar funcion que te da la lista de tracks
         getAllTracks();
 
+        // Definimos las funciones que se ejecutarán al dar Click a los tres botones
         getSingleTrack.setOnClickListener(new View.OnClickListener() {
             @Override
+            // Llama a la función que abre una ventanita para darte la información de ese Track
             public void onClick(View v) {
                 openDialog();
             }
@@ -82,6 +84,7 @@ public class MainActivity extends AppCompatActivity implements SingleTrackDialog
 
         getAllTracks.setOnClickListener(new View.OnClickListener() {
             @Override
+            // Llama a la función getAllTrack (solo actualiza), no muestra ni abre nada
             public void onClick(View v) {
                 getAllTracks();
             }
@@ -89,6 +92,7 @@ public class MainActivity extends AppCompatActivity implements SingleTrackDialog
 
         createTrack.setOnClickListener(new View.OnClickListener() {
             @Override
+            // Llama a la función que abre un nuevo Activity
             public void onClick(View v) {
                 openCreateLayout();
             }
@@ -96,18 +100,22 @@ public class MainActivity extends AppCompatActivity implements SingleTrackDialog
 
     }
 
+    //Abrir layout createactivity
     private void openCreateLayout(){
         Intent intent = new Intent(this, CreateTrackActivity.class);
         startActivity(intent);
     }
 
+    //Abrir ver una cancion, no se un intent si no como antes te sale un cuadro de texto preguntandote el id y cuando se pone se abre el layout
     private void openDialog() {
         SingleTrackDialog  singleTrackDialog= new SingleTrackDialog();
         singleTrackDialog.show(getSupportFragmentManager(), "Single Track Dialog");
     }
 
+    //Poner el id para buscar una cancion
     @Override
     public void applyTexts(int id){
+        //Llama funcion getSingleTrack
         getSingleTrack(id);
     }
 

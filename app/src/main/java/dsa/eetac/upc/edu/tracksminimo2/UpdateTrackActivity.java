@@ -38,7 +38,7 @@ public class UpdateTrackActivity extends AppCompatActivity {
 
         //Obtiene el Intent para empiezar la actividad y extraigo el string
         Intent intent = getIntent();
-
+        //Obtiene el Intent para inicia la actividad y extraigo los strings de cada campo
         String messageId = intent.getStringExtra("TRACK ID");
         String[] messageIdParts = messageId.split(" ");
         int id = Integer.parseInt(messageIdParts[1]);

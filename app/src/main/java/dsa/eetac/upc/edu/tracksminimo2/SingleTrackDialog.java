@@ -19,6 +19,7 @@ public class SingleTrackDialog extends AppCompatDialogFragment {
     //Es dialog
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState){
+        //Llama a alaert
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         LayoutInflater inflater = getActivity().getLayoutInflater();

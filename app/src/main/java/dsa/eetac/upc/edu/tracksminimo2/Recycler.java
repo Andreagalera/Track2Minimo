@@ -115,7 +115,7 @@ public class Recycler extends RecyclerView.Adapter<Recycler.ViewHolder> {
                 TextView textSinger = v.findViewById(R.id.singerTrack);
                 //Guardamos el valor id del editText una variable tipo String
                 String messageId = textId.getText().toString();
-                //Trozear
+                //Trozear Solo queremos int y asi nos aseguramos que solo cojemos id
                 String[] messageIdparts = messageId.split(":");
                 String id = messageIdparts[1];
                 //Guardamos el valor del titulo y cantante editText una variable tipo String
